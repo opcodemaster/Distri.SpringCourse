@@ -1,4 +1,4 @@
-package com.SpringCourse.FirstActivity;
+package com.UniDistrital.FirstActivity;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

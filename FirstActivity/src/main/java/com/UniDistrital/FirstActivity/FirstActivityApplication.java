@@ -1,4 +1,4 @@
-package com.SpringCourse.FirstActivity;
+package com.UniDistrital.FirstActivity;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
