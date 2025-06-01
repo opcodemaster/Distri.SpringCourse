@@ -1,21 +1,41 @@
 package com.UniDistrital.FirstActivity.services;
 
-import com.UniDistrital.FirstActivity.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.Arrays;
+import java.util.List;
 
-import com.UniDistrital.FirstActivity.models.UserDTO;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.UniDistrital.FirstActivity.dto.LoginRequestDTO;
+import com.UniDistrital.FirstActivity.dto.LoginResponseDTO;
+import com.UniDistrital.FirstActivity.dto.UserDTO;
+
+import lombok.AllArgsConstructor;
 
 @Service
-public class UserService {
-    private final UserRepository userRepository;
+@AllArgsConstructor
+public class UserService implements IUserService {
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final RestTemplate restTemplate;
+    private final AuthService authService;
+    private final String urlOfService = "https://fakestoreapi.com/users/";
 
-    public UserDTO createUser(UserDTO userDTO) {
-        return userRepository.save(userDTO);
+    @Override
+    public LoginResponseDTO login(LoginRequestDTO request) {
+        List<UserDTO> users = fetchAllUsers();
+    
+        return users.stream()
+            .filter(user -> 
+                user.getUsername().equals(request.getUsername()) &&
+                user.getPassword().equals(request.getPassword()))
+            .findFirst()
+            .map(user -> authService.getTokenByCredentials(request))
+            .orElseThrow(() -> new RuntimeException("Usuario o contraseña incorrectos"));
+    }    
+
+    @Override
+    public List<UserDTO> fetchAllUsers() {
+        UserDTO[] users = restTemplate.getForObject(urlOfService, UserDTO[].class);
+        return Arrays.asList(users);
     }
 }
