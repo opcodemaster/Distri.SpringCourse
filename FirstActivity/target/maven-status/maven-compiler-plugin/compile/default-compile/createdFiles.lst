@@ -10,7 +10,6 @@ com/UniDistrital/FirstActivity/FirstActivityApplication.class
 com/UniDistrital/FirstActivity/services/UserService.class
 com/UniDistrital/FirstActivity/dto/LoginResponseDTO.class
 com/UniDistrital/FirstActivity/models/User.class
-com/UniDistrital/FirstActivity/models/Cart$CartItem.class
 com/UniDistrital/FirstActivity/dto/ProductDTO$Rating.class
 com/UniDistrital/FirstActivity/dto/UserDTO$UserDTOBuilder.class
 com/UniDistrital/FirstActivity/dto/UserDTO.class

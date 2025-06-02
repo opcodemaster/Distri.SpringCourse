@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 public class ProductService implements IProductService {
 
     private final RestTemplate restTemplate;
-    private final String urlOfService = "https://fakestoreapi.com/products";
+    private final String urlOfService = "https://fakestoreapi.com/products/";
 
     @Override
     public ProductDTO fechProductByID(int productID) {

@@ -3,10 +3,13 @@
 <head>
     <title>Listado de Artículos</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <h1>Artículos disponibles para compra</h1>
-
+    <a th:href="@{/cart}" style="font-size: 24px; text-decoration: none;">
+        <i class="fas fa-info-circle"></i>
+    </a>
     <table border="1">
         <thead>
             <tr>

@@ -29,7 +29,9 @@ public class UserService implements IUserService {
                 user.getUsername().equals(request.getUsername()) &&
                 user.getPassword().equals(request.getPassword()))
             .findFirst()
-            .map(user -> authService.getTokenByCredentials(request))
+            .map(user -> LoginResponseDTO.builder()
+            .id(user.getId())
+            .build())
             .orElseThrow(() -> new RuntimeException("Usuario o contraseña incorrectos"));
     }    
 
